@@ -13,15 +13,16 @@ const Header = () => {
 
 const Image = (props) => {
     return (        
-        <section>
+        <section className="imageSection">
             <img src={props.imageToDisplay}/>
+   
         </section>
     )
 }
 
 const Button = (props) => {
     return (        
-        <section>
+        <section className="buttonSection">
             <button onClick={props.callback}>Toggle Hat</button> 
         </section>
     )
@@ -36,7 +37,7 @@ const App = () => {
     };
 
     return (
-        <div>
+        <div className="fullScreen">
             <Header/>    
             <Image imageToDisplay={imgUrl} />
             <Button callback={toggleHat} />
