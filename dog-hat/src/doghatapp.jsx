@@ -1,42 +1,51 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import dogHatImgs from "../../assets/dog-hat" 
+import dogHatImgs from "./dog-hat-images" 
 import { useState } from 'react'
 
-const [isHatOn, setIsHatOn] = useState(false)
-
 const Header = () => {
-    return(
+    return (
         <header>
         <h1>Dog Hat App</h1>
         </header>
-    )}
-
+    )
+}
 
 const Image = (props) => {
-    return(        
-    <section>
-        <img src={props.imageToDisplay}/>
-    </section>)
+    return (        
+        <section>
+            <img src={props.imageToDisplay}/>
+        </section>
+    )
 }
 
-const ToggleHat = () => {
-    console.log("button!")
+const Button = (props) => {
+    return (        
+        <section>
+            <button onClick={props.callback}>Toggle Hat</button> 
+        </section>
+    )
 }
 
-const Button = () => {
-    return(        
-    <section>
-        <button onClick={ToggleHat} >Toggle Hat</button> 
-    </section>)
+const App = () => {
+    const [imgUrl, setImgUrl] = useState(dogHatImgs[1]);
+
+    const toggleHat = () => {
+        if (imgUrl === dogHatImgs[1]) setImgUrl(dogHatImgs[0]);
+        else setImgUrl(dogHatImgs[1]);
+    };
+
+    return (
+        <div>
+            <Header/>    
+            <Image imageToDisplay={imgUrl} />
+            <Button callback={toggleHat} />
+        </div>
+    )
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <div>
-        <Header/>    
-        <Image imageToDisplay={dogHatImgs[1]} />
-        <Button/>
-    </div>
+    <App/>
 ) 
 
 
